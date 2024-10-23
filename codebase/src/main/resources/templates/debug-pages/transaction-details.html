@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <ul>
+        <li th:each="m : ${transactionEntries}"><span th:text="${m.transactionId()}"/> - <span th:text="${m.prescriptionId()}"/> - <span th:text="${m.quantity()}"/> - <span th:text="${m.purchasePrice()}"/></li>
+    </ul>
+</body>
+</html>

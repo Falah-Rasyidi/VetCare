@@ -1,0 +1,12 @@
+.col-md-4{
+    margin-bottom: 12px;
+}
+
+.inputSize {
+    width: auto;
+}
+
+.inline{
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,83 @@
+.section1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.header-content {
+    text-align: center;
+    width: 30vw;
+}
+
+.header-content h1 {
+    font-weight: bold;
+    font-size: 5vw;
+}
+.header-content h2 {
+    font-weight: bold;
+    font-size: 2vw;
+}
+.header-content h4 {
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.header-image {
+    width: 32vw;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.card {
+    max-width: 30vw;
+}
+
+.review-group {
+    display: flex;
+    justify-content: space-between; /* Spread the reviews evenly */
+    align-items: center; /* Vertically align reviews */
+    gap: 2rem; /* Add space between the reviews */
+    flex-wrap: wrap; /* Ensures they wrap if the screen is too small */
+    padding: 2rem;
+}
+
+.review {
+    max-width: 25vw;
+    text-align: center;
+    border-radius: 15px;
+    border: rgba(var(--tertiary-colour-raw), 0.5) 2px solid;
+    background-color: rgba(var(--tertiary-colour-raw), 0.66);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+}
+
+.review-img {
+    border-radius: 50%;
+    /*Changed to just not max height and width so it doesnt auto scale to an oval*/
+    height: 5rem;
+    width: 5rem;
+    /*Keeps aspect ratio*/
+    object-fit: cover;
+    margin: 1rem;
+
+}
+
+.header-image:hover{
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

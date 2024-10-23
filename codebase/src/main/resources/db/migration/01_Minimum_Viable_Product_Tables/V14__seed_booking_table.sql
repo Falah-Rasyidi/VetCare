@@ -1,0 +1,5 @@
+-- INSERT INTO booking
+--     (bookingId,userId,petId,clinicId,contactId,availabilityId,serviceId,status)
+-- VALUES
+--     (1,1,2,1,1,1,1,'Booked'),
+--     (2,2,3,3,6,5,3,'Booked');

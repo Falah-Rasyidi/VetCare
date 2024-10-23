@@ -1,0 +1,71 @@
+/* Article content */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+.banner-image {
+    height: 4cm;
+    background-image: url("../../images/unsplash_abstract.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.article-content {
+    width: 75%;
+    padding: 1cm;
+}
+h1 {
+    font-family: vetcareserif, serif;
+}
+h5, h6 {
+    color: rgba(150, 150, 150, 0.80);
+}
+p {
+    font-size: 1.25rem;
+}
+
+/* Sharing to social media */
+.social-media {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 1cm 0;
+    padding-right: 1cm;
+    border-right: 1px solid grey;
+}
+.share-buttons {
+    position: sticky;
+    top: 1cm;
+}
+.share-buttons div {
+    width: 62.5px; /* 💀 */
+    height: 62.5px;
+    margin: 0.5cm 0;
+    transition: 0.2s;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+.share-buttons div:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    filter: opacity(50%);
+}
+#facebook {
+    background-image: url("../../images/1000logos_facebook.png")
+}
+#twitter {
+    background-image: url("../../images/freepik_twitter.png");
+}
+#whatsapp {
+    background-image: url("../../images/edigitalagency_whatsapp.png");
+}
+#email {
+    background-color: darkgrey;
+    background-image: url("../../images/wikimedia_email.png");
+}

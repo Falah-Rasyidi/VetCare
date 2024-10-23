@@ -1,0 +1,86 @@
+/* Store navigation bar */
+.store-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2cm;
+}
+.store-navbar a {
+    padding: 5px;
+    transition: 0.2s;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+.store-navbar a:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: rgba(var(--tertiary-colour-raw), 0.25);
+}
+.store-navbar a:active {
+    transition: 0.1s;
+    color: var(--primary-colour-rgb);
+    background-color: rgba(var(--tertiary-colour-raw), 0.5);
+}
+
+/* Page header */
+h1 {
+    font-family: vetcareserif, serif;
+}
+
+/* Search bar */
+.search-bar {
+    width: 50%;
+    margin: 1cm auto;
+}
+
+/* Products section */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1cm;
+    column-gap: 20px;
+    row-gap: 40px;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 425px;
+}
+.product-image {
+    height: 66.66%;
+    border-radius: 10px 10px 0 0;
+    background-image: url("../../images/figma_productplaceholder.png");
+    background-position: center;
+    background-size: cover;
+}
+.product-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5cm;
+    border-radius: 0 0 10px 10px;
+    background-color: var(--secondary-colour-rgb);
+}
+
+/* See-more buttons */
+.see-more {
+    font-family: Arial, sans-serif;
+    font-size: 1.15rem;
+    margin-bottom: 0;
+    padding: 5px;
+    transition: 0.2s;
+    border-radius: 5px;
+}
+.see-more:hover {
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: rgba(var(--tertiary-colour-raw), 0.25);
+}
+.see-more:active {
+    transition: 0.1s;
+    color: var(--primary-colour-rgb);
+    background-color: rgba(var(--tertiary-colour-raw), 0.5);
+}

@@ -1,0 +1,29 @@
+/* FIXME: Change variable names to something that isn't this vvvvv */
+:root {
+    --primary-colour-rgb: rgb(69, 87, 171);
+    --secondary-colour-rgb: rgb(140, 159, 211);
+    --tertiary-colour-rgb: rgb(196, 195, 197);
+    --quaternary-colour-rgb: rgb(232, 237, 243);
+    --quinternary-colour-rgb: rgb(255, 176, 57);
+
+    /* -raw postfix makes values compatible for use with rgba */
+    --primary-colour-raw: 69, 87, 171;
+    --secondary-colour-raw: 140, 159, 211;
+    --tertiary-colour-raw: 196, 195, 197;
+    --quaternary-colour-raw: 232, 237, 243;
+    --quinternary-colour-raw: 255, 176, 57;
+
+    --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@font-face {
+    font-family: vetcareserif;
+    src: url("../fonts/DMSerifDisplay-Regular.ttf");
+}
+
+body {
+    background-image: url('../images/pawprintbg.png');
+    background-size: 50% auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}

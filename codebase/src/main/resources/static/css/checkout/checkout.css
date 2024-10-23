@@ -1,0 +1,20 @@
+/* Checkout container */
+.checkout-container {
+    margin: 1cm 0;
+}
+
+/* Checkout form */
+.checkout-form {
+    width: 420px;
+    margin: 1cm auto;
+    padding: 1cm;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+}
+.checkout-form form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}

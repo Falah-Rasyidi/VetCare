@@ -1,0 +1,48 @@
+.footer {
+    color: black;
+    text-decoration: none;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #c6cfe9;
+}
+
+.footer-link-vetcare {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    margin: 0 3vw;
+    vertical-align: middle;
+}
+
+.footer-link {
+    color: black;
+    margin: 0 1vw;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 2px solid black;
+    margin: 0;
+}
+
+.container.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.container.text-center a {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+#bigger_text {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+

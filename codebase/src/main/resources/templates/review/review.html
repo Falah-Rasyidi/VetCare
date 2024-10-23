@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review</title>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../static/review.css"/>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<div class="topnav">
+    <a href="#">LOGO</a>
+    <a href="#">PetCare</a>
+    <a href="#">Clinics</a>
+    <a href="#">Products</a>
+    <a href="#">Prescriptions</a>
+    <a href="#">Appointments</a>
+    <a href="#" class="cart-button">Cart</a>
+</div>
+
+<!-- Main Container -->
+<main class="review-container">
+    <h2>Submit Your Review</h2>
+
+    <form class="review-form">
+        <!-- Review ID -->
+        <div class="form-group">
+            <label for="reviewID">Review ID</label>
+            <input type="number" id="reviewID" name="reviewID" required>
+        </div>
+
+        <!-- User ID -->
+        <div class="form-group">
+            <label for="userID">User ID</label>
+            <input type="number" id="userID" name="userID" required>
+        </div>
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" maxlength="100" required>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <!-- Rating -->
+        <div class="form-group">
+            <label for="rating">Rating (0.0 - 5.0)</label>
+            <input type="number" id="rating" name="rating" step="0.1" min="0.0" max="5.0" required>
+        </div>
+
+        <!-- Submission Date and Time -->
+        <div class="form-group">
+            <label for="submissionDateTime">Submission Date & Time</label>
+            <input type="datetime-local" id="submissionDateTime" name="submissionDateTime" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-button">Submit Review</button>
+    </form>
+</main>
+
+</body>
+</html>

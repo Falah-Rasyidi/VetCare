@@ -1,0 +1,107 @@
+/* ARTICLE PAGE CSS FILE */
+
+.article-card {
+    margin-bottom: 20px;
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.article-card .card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.article-card .card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.card-summary {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.modal-lg {
+    max-width: 900px;
+}
+
+.modal-body img {
+    width: 100%;
+    height: auto;
+}
+
+.article-meta {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.article-content {
+    margin-top: 15px;
+    text-align: justify;
+}
+
+.modal-footer {
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-summary {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}

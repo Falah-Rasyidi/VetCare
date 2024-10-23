@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+
+<head>
+    <title>Transactions Entry</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+
+    <h1>Returned Transactions</h1>
+    <ul>
+        <li th:each="m : ${transactions}"><span th:text="${m.transactionId()}"/> - <span th:text="${m.userId()}"/> - <span th:text="${m.status()}"/> - <span th:text="${m.dateSubmitted()}"/> - <span th:text="${m.timeSubmitted()}"/></li>
+    </ul>
+    <h1>Returned Entrie</h1>
+    <ul>
+        <li th:each="m : ${cartEntries}"><span th:text="${m.userId}"/> - <span th:text="${m.prescriptionId}"/> - <span th:text="${m.quantity}"/></li>
+    </ul>
+    <h1>Transaction This user</h1>
+    <form action="#" id="1" th:action="@{/debug-trans-entry}" method="post">
+        <p>UserId: <input type="number" th:name="userId"/></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <h1>More detail of this transaction id</h1>
+    <form action="#" id="2" th:action="@{/transaction-details}" method="post">
+        <p>Transaction Id: <input type="number" th:name="transactionID"/></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+
+</html>

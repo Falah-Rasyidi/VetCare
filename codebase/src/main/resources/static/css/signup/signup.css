@@ -1,0 +1,45 @@
+.signup-form {
+    width: 420px;
+    margin: 1cm auto;
+    padding: 1cm;
+    border: rgba(var(--tertiary-colour-raw), 0.5) 2px solid;
+    border-radius: 15px;
+    background-color: rgba(var(--tertiary-colour-raw), 0.66);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+}
+.signup-title {
+    font-family: vetcareserif, serif;
+    text-align: center;
+}
+.signup-title > strong > a {
+    color: black;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.signup-title > strong > a:hover {
+    transition: 0.1s;
+    color: grey;
+}
+.signup-title > strong > a:active {
+    transition: 0.1s;
+    color: black;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+form > div {
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+p {
+    font-weight: normal;
+    margin: 0;
+}
+form button {
+    width: 100%;
+    margin-top: 0.5cm;
+}

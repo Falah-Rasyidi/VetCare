@@ -1,0 +1,198 @@
+/*-----------------JP button design----------------------*/
+.jp-button-design {
+    font-size: 14px;
+    font-weight: bold;
+    width: 110px;
+    height: 35px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    color: #4557ab;
+    border: 2px solid #1c202a;
+    border-radius: 25px;
+    background-color: white;
+
+}
+
+.jp-button-design:hover {
+    transform: scale(1.05);
+    color: white;
+    background-color: #4557ab;
+}
+/*-----------------NOTIFICATIONS----------------------*/
+input[type="checkbox"] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 4px;
+    appearance: none;
+}
+
+/* Checkbox on hover */
+input[type="checkbox"]:hover {
+    background-color: #e0e7ff;
+}
+
+/* Checkbox when checked */
+input[type="checkbox"]:checked {
+    border-color: rgb(0,0,00);
+    background-color: #4557ab;
+}
+
+/*Adds the "X" and changes background colour when tick box selected*/
+input[type="checkbox"]:checked::after {
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: 'X';
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/*-----------------Misc/general----------------------*/
+#titleMargin{
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    padding: 10px 5px 20px;
+    border-radius: 5px;
+    background-color: rgb(255,255,255);
+}
+
+.profileNotificationsContainer,
+.petAndAddPetContainer{
+    gap: 20px; /* Adds a 20px space between User Profile and Notification */
+    display: flex;
+    flex-direction: column;
+}
+
+.userDetails {
+    display: flex;
+    flex: 1; /* Ensures both sections take up equal space next to each other */
+    column-gap: 1cm;
+}
+
+.userProfile {
+    width: 100%;
+}
+
+.notifications {
+    width: 100%;
+}
+
+.petDetails{
+    flex: 3;
+}
+
+.addPet{
+    display: flex;
+    align-items: center; /* Centers vertically */
+    flex: 1;
+    justify-content: center; /* Centers horizontally */
+}
+
+.detailsBox {
+    /*background-color: rgb(255, 255, 255);*/
+    padding: 20px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    background-color: #c6cfe9;
+    /*margin-bottom: 20px;*/
+}
+
+.addPetButton {
+    font-size: 1.5em;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: center;
+    color: white;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 50%;
+    background-color: #4557ab;
+}
+
+.addPetButton:hover {
+    border: 3px solid #4557ab;
+    background-color: rgb(255, 176, 57);
+}
+
+/*used to align only the label and input field/information next to each other properly*/
+.inline {
+    display: inline-block;
+}
+/*used to align only the label and input field/information next to each other properly*/
+.block{
+    display: block;
+}
+
+.imgTitle{
+    /*margin-bottom: 8px;*/
+    width: fit-content;
+    padding: 3px 3px 10px;
+    background-color: rgb(255,255,255);
+}
+
+#circleImg{
+    border-radius: 50%;
+}
+
+.imgMargin{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+#opac{opacity:75%}
+
+.petSelector{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.footerMargin{margin-top: 15px;}
+
+/* Modern modal body styling */
+.modern-modal-body {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+}
+
+/* Styling for form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+.modal-footer,
+.modal-header{
+    background-color: #f9f9f9;
+}
+
+/* Modern input field styling */
+.modern-input {
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Input focus state */
+.modern-input:focus {
+    border-color: #4557ab;
+    box-shadow: 0 0 5px rgba(69, 87, 171, 0.5);
+}
+
+.nonBold{
+    font-weight: normal;
+}

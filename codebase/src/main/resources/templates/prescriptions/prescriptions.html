@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Refill</title>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+<!--    <link rel="stylesheet" type="text/css" href="../static/prescription.css"/>-->
+    <link th:href="@{/css/prescription/prescription.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Prescriptions</h2>
+            <div class="mb-4">
+                <label for="petSelect" class="form-label">Select a Pet:</label>
+                <select class="form-select" id="petSelect" name="pet">
+                    <option disabled selected value="">Choose a pet</option>
+                    <option th:each="pet : ${petLists}" th:value="${pet.petId}" th:text="${pet.petName}"></option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4" th:each="prescription : ${prescriptions}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title" th:text="${prescription.medicineName}">Medicine Name</h3>
+                            <p class="card-text" th:text="${prescription.description}">Description</p>
+                            <p><strong>Dosage:</strong>
+                                <span th:text="${prescription.dosage}">Dosage</span></p>
+
+                            <p><strong>Instructions:</strong>
+                                <span th:text="${prescription.instructions}">Instructions</span></p>
+
+                            <p><strong>Price:</strong> $<span th:text="${prescription.price}">Price </span></p>
+
+                            <div class="inline" th:if="${loggedInUser != null}">
+                                <form th:action="@{/prescriptions/add_prescription}" method="post">
+                                    <!-- Prescription ID -->
+                                    <input type="hidden" name="id" th:value="${prescription.prescriptionId()}">
+
+                                    <input type="number" name="quantity" class="form-control me-2 inputSize"
+                                           min="1" max="10" value="1"
+                                           aria-label="Quantity"
+                                           th:id="'quantity' + ${prescription.prescriptionId}" />
+
+                                    <button type="submit" class="btn btn-primary addToCart"
+                                            th:data-prescription-id="${prescription.prescriptionId}">
+                                        Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+
+<head>
+    <title>Cart Entry</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Returned Entrie</h1>
+    <ul>
+        <li th:each="m : ${cartEntries}"><span th:text="${m.userId}"/> - <span th:text="${m.prescriptionId}"/> - <span th:text="${m.quantity}"/></li>
+    </ul>
+    <h1>Submit new Entry</h1>
+    <form action="#" th:action="@{/debug-cart-entry}" th:object="${newCartEntry}" method="post">
+        <p>UserId: <input type="text" th:field="*{userId}" /></p>
+        <p>PrescriptionId: <input type="text" th:field="*{prescriptionId}" /></p>
+        <p>Quantity: <input type="number" th:field="*{quantity}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+
+</html>

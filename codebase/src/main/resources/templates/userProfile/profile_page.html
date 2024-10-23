@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}" lang="eng">
+
+<head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <!-- Layout -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/profile/profile_page.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+    <script defer th:src="@{/js/app.js}"></script>
+    <!-- Layout -->
+    <script>
+        function deleteUser() {
+            fetch('/user_profile/delete_profile', {
+                'method': 'DELETE'
+            }).then(response => {
+                if (response.ok) {
+                    window.location.replace("/")
+                }
+                else {
+                    console.log(response)
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="profile-container">
+        <h1>Profile and Settings</h1>
+        <hr/>
+        <!-- Profile and notification cards -->
+        <div class="profile-notification-section">
+            <div class="profile">
+                <h2>User Profile</h2>
+                <div class="profile-information">
+                    <form th:class="${!#arrays.isEmpty(userErrors)} ? 'was-validated' : 'needs-validation'" id="edit-profile" th:object="${editUser}" method="post" novalidate>
+                        <div>
+                            <label for="user-first-name">First name</label>
+                            <input type="text" class="form-control" id="user-first-name" name="firstName" placeholder="First name" th:value="${tempUser.getFirstName()}" required>
+                            <div class="invalid-feedback">
+                                <p th:if="${#arrays.contains(userErrors, 'firstNameEmpty')}">Please provide a first name</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="user-last-name">Last name</label>
+                            <input type="text" class="form-control" id="user-last-name" name="lastName" placeholder="Last name" th:value="${tempUser.getLastName()}" required>
+                            <div class="invalid-feedback">
+                                <p th:if="${#arrays.contains(userErrors, 'lastNameEmpty')}">Please provide a last name</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="user-email">Email</label>
+                            <input type="email" class="form-control" id="user-email" name="email" placeholder="Email" th:value="${tempUser.getEmail()}" autocomplete="off" required>
+                            <div class="invalid-feedback">
+                                <p th:if="${#arrays.contains(userErrors, 'emailDuplicate')}">Email already in use. Please enter another email</p>
+                                <p th:if="${#arrays.contains(userErrors, 'emailInvalid')}">Please provide a valid email</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="user-phone-number">Phone no.</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">+61</div>
+                                </div>
+                                <input type="tel" class="form-control" id="user-phone-number" name="phoneNumber" placeholder="Phone number" pattern="^((\d{3}) (\d{3}) (\d{3}))$" th:value="${tempUser.getPhoneNumber()}" required>
+                                <div class="invalid-feedback">
+                                    <p th:if="${#arrays.contains(userErrors, 'invalidPhoneNumber')}">Please provide a valid Australian phone number</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="card-buttons">
+                        <button type="submit" form="edit-profile" th:formaction="@{/user_profile/edit_profile}" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-user">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="notifications">
+                <h2>Notification Settings</h2>
+                <div class="notification-information form-check">
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label">
+                            Receive appointment reminders
+                        </label>
+                    </div>
+
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label">
+                            Receive delivery updates
+                        </label>
+                    </div>
+
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label">
+                            Notify of product sales
+                        </label>
+                    </div>
+
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label">
+                            Notify of current news and events
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pet cards -->
+        <div class="pets-section">
+            <h2>Pet Profile</h2>
+            <div class="pet-card-container">
+                <div class="pet-card" th:each="pet : ${petList}">
+                    <form th:id="${pet.petId()}" th:object="${editPet}" method="post">
+                        <input type="hidden" id="pet-id" name="petId" th:value="${pet.petId()}">
+                        <div>
+                            <label for="pet-name">Pet name</label>
+                            <input type="text" class="form-control" id="pet-name" name="name" th:value="${pet.name()}" required>
+                        </div>
+
+                        <div>
+                            <label for="pet-species">Pet type</label>
+                            <input type="text" class="form-control" id="pet-species" name="species" th:value="${pet.species()}" required>
+                        </div>
+
+                        <div>
+                            <label for="pet-breed">Pet breed</label>
+                            <input type="text" class="form-control" id="pet-breed" name="breed" th:value="${pet.breed()}" required>
+                        </div>
+
+                        <div>
+                            <label for="pet-dob">Pet DOB</label>
+                            <input type="date" class="form-control" id="pet-dob" name="DOB" th:value="${pet.DOB()}" required>
+                        </div>
+                    </form>
+
+                    <div class="card-buttons">
+                        <button type="submit" th:form="${pet.petId()}" th:formaction="@{/user_profile/edit_pet}" class="btn btn-primary">Edit</button>
+                        <button type="submit" th:form="${pet.petId()}" th:formaction="@{/user_profile/delete_pet}" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                <button type="button" class="add-pet" data-bs-toggle="modal" data-bs-target="#addPet">
+                    <div class="plus-sign"></div>
+                    <p>Add pet</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Add pet modal -->
+        <div class="modal fade" id="addPet" tabindex="-1" role="dialog" aria-labelledby="addPetLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addPetLabel">Add a pet</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-pet" th:object="${newPet}" method="post">
+                            <div>
+                                <label for="add-pet-name">Pet name</label>
+                                <input type="text" class="form-control" id="add-pet-name" name="name" required>
+                            </div>
+
+                            <div>
+                                <label for="add-pet-gender">Pet gender</label>
+                                <select class="form-control" id="add-pet-gender" name="gender" required>
+                                    <option selected disabled value>Choose gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="n/a">N/A</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="add-pet-species">Pet type</label>
+                                <input type="text" class="form-control" id="add-pet-species" name="species" required>
+                            </div>
+
+                            <div>
+                                <label for="add-pet-breed">Pet breed</label>
+                                <input type="text" class="form-control" id="add-pet-breed" name="breed" required>
+                            </div>
+
+                            <div>
+                                <label for="add-pet-dob">Pet date of birth</label>
+                                <input type="date" class="form-control" id="add-pet-dob" name="DOB" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="add-pet" th:formaction="@{/user_profile/add_pet}" class="btn btn-primary">Add pet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete account modal -->
+        <div class="modal fade" id="delete-user" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete account</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="deleteUser()" class="btn btn-danger">Delete account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

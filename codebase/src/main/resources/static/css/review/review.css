@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-colour: #4557ab;
+    --secondary-colour: #8c9fd3;
+    --tertiary-colour: #c4c3c5;
+    --quaternary-colour: #e8edf3;
+    --quinternary-colour: #ffb043;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--quaternary-colour);
+}
+
+.topnav {
+    background-color: var(--primary-colour);
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+}
+
+.topnav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+
+.topnav a:hover {
+    background-color: var(--quinternary-colour);
+    color: black;
+}
+
+.review-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.review-container h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--primary-colour);
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--primary-colour);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--tertiary-colour);
+    border-radius: 5px;
+    background-color: var(--quaternary-colour);
+    color: var(--primary-colour);
+}
+
+.submit-button {
+    padding: 12px 20px;
+    background-color: var(--primary-colour);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: var(--quinternary-colour);
+}

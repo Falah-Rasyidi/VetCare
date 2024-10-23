@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Log in</title>
+    <!-- Layout -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+    <!--<script th:src="@{/js/app.js}" defer></script>-->
+    <!-- / Layout -->
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="login-form">
+        <h1 class="display-5 login-title"><strong><a th:href="@{/}">VetCare</a></strong></h1>
+        <h3 class="text-muted text-center">Log in</h3>
+        <hr/>
+        <form method="post" novalidate
+              th:action="@{/login_user}" th:class="${!#arrays.isEmpty(errors)} ? 'was-validated' : 'needs-validation'"
+              th:object="${user}">
+            <div>
+                <label for="email">Email</label>
+                <input class="form-control" id="email" name="email" placeholder="Enter your email" required
+                       th:value="${tempUser.getEmail()}" type="email">
+                <div class="invalid-feedback">
+                    <p th:if="${#arrays.contains(errors, 'emailEmpty')}">Please provide a valid email</p>
+                    <p th:if="${#arrays.contains(errors, 'emailNonexistent')}">The specified email does not exist</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input class="form-control" id="password" minlength="8" name="password"
+                       placeholder="Enter your password" required th:value="${tempUser.getPassword()}" type="password">
+                <div class="invalid-feedback">
+                    <p th:if="${#arrays.contains(errors, 'passwordEmpty')}">Please provide a valid password</p>
+                    <p th:if="${#arrays.contains(errors, 'passwordMismatch')}">Incorrect password. Please try again</p>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Log in</button>
+
+            <hr/>
+            <!--    Incorrect usage of API, currently only using it for visuals due to inconsistent URI endpointing    -->
+            <a href="/oauth2/authorization/google">
+                <div style="pointer-events: none">
+                    <script src="https://accounts.google.com/gsi/client" async></script>
+                    <div id="g_id_onload"
+                         data-context="use"
+                    >
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-size="large"
+                         data-theme="outline"
+                         data-text="sign_in_with"
+                         data-shape="rectangular"
+                         data-logo_alignment="left">
+                    </div>
+                </div>
+            </a>
+            <hr/>
+            <p>Don't have an account yet? <a th:href="@{/signup}">Sign up</a></p>
+
+
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

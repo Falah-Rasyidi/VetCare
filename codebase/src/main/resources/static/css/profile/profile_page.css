@@ -1,0 +1,151 @@
+/* Profile container */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1cm auto;
+}
+
+/* Profile and notification container */
+.profile-notification-section {
+    display: flex;
+    margin: 0.5cm;
+    column-gap: 1cm;
+}
+.profile,
+.notifications {
+    width: 100%;
+}
+
+/* Profile card */
+.profile-information {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5cm;
+    border-style: solid;
+    border-radius: 15px;
+    background-color: #c6cfe9;
+    box-shadow: var(--box-shadow);
+    row-gap: 0.5cm;
+    .card-buttons {
+        display: flex;
+        gap: 15px;
+    }
+    .card-buttons button {
+        width: 100%;
+    }
+}
+.profile-information form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+/* Notification */
+.notification-information{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5cm 1cm 0.5cm;
+    border-style: solid;
+    border-radius: 15px;
+    background-color: #c6cfe9;
+    box-shadow: var(--box-shadow);
+    row-gap: 15px;
+}
+.notification-information input[type="checkbox"] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 4px;
+    appearance: none;
+}
+.notification-information input[type="checkbox"]:hover {
+    background-color: #e0e7ff;
+}
+.notification-information input[type="checkbox"]:checked {
+    border-color: rgb(0,0,00);
+    background-color: #4557ab;
+}
+
+/* Pet card container */
+.pet-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+/* Pets container */
+.pets-section {
+    margin: 0.5cm;
+}
+
+/* Pet card */
+.pet-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 8cm;
+    height: 400px;
+    padding: 0.5cm;
+    border-radius: 15px;
+    background-color: var(--secondary-colour-rgb);
+    box-shadow: var(--box-shadow);
+    .card-buttons {
+        display: none;
+    }
+}
+.pet-card:hover {
+    .card-buttons {
+        display: flex;
+        gap: 15px;
+    }
+    .card-buttons button {
+        width: 100%;
+    }
+}
+.pet-card form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+/* Add pet */
+.add-pet {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 8cm;
+    height: 400px;
+    padding: 0.5cm;
+    transition: 0.3s;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--secondary-colour-rgb);
+    box-shadow: var(--box-shadow);
+}
+.add-pet:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgb(119, 137, 183);
+}
+.add-pet:active {
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: rgb(129, 148, 197);
+}
+.plus-sign {
+    width: 3cm;
+    height: 3cm;
+    background-image: url("../../images/globalsymbols_plussign.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 3cm;
+}
+.modal-body form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}

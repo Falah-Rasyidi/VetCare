@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}" lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Error Occured</title>
+    <link rel="stylesheet" th:href="@{/css/homepage/homepage.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+</head>
+<!--  Add bg to styles.css (remove from homepage to make global)  -->
+<body>
+<div layout:fragment="content">
+    <div >
+        <h1>Whoops, something went wrong</h1>
+        <h2>Our code monkeys are fixing it</h2>
+    </div>
+</div>
+</body>
+
+</html>

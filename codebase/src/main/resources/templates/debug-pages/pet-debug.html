@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       lang="en">
+
+<head>
+    <title>Pet List</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Returned Pets</h1>
+    <ul th:each="m : ${pets}">
+        <li><span th:text="${m.petId()}"/> - <span th:text="${m.userId()}"/> - <span th:text="${m.name()}"/></li>
+    </ul>
+    <h1>Submit new Pet</h1>
+    <form action="#" th:action="@{/debug-pet}" th:object="${newpet}" method="post">
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+<!--        <p>Gender: <input type="text" th:field="*{gender}" /></p>-->
+
+        <label for="gender">Gender:</label>
+        <select th:field="*{gender}" id="gender">
+            <option value="Male"> Male</option>
+            <option value="Female">Female</option>
+            <option value="N/A">N/A</option>
+        </select>
+
+        <p>Species: <input type="text" th:field="*{species}" /></p>
+        <p>Breed: <input type="text" th:field="*{breed}" /></p>
+        <p>DateOfBirth: <input type="date" th:field="*{DOB}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+
+</html>

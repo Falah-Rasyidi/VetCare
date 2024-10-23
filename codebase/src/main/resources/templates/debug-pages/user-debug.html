@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       lang="en">
+
+<head>
+    <title>User List</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Returned Users</h1>
+    <ul th:each="m : ${users}">
+        <li><span th:text="${m.userId}"/> - <span th:text="${m.firstName}"/> - <span th:text="${m.lastName}"/></li>
+    </ul>
+    <h1>Submit new User</h1>
+    <form action="#" th:action="@{/debug-user}" th:object="${newuser}" method="post">
+        <p>First Name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Password: <input type="password" th:field="*{password}" /></p>
+        <p>Phone Number: <input type="text" th:field="*{phoneNumber}" /></p>
+        <p>Email Address: <input type="text" th:field="*{email}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+
+</html>

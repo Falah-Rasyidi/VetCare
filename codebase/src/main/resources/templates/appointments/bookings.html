@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Make a Booking</title>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/appointments/bookings.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <main class="booking-container d-flex justify-content-center">
+        <div class="text-center"> <!-- centering div -->
+            <h2>Make a Booking</h2>
+
+            <form action="#" th:action="@{/bookings}" th:object="${newBooking}" method="post">
+
+                <!-- Pet Selection Section -->
+                <div class="form-group mb-4">
+                    <h4>Select Pet</h4>
+                    <select name="petId" id="pet-type" th:field="*{petId}" class="form-control">
+                        <option th:each="p : ${pets}" th:value="${p.petId()}" th:text="${p.name()}"></option>
+                    </select>
+                </div>
+
+                <!-- Available Timeslots Section -->
+                <div class="form-group mb-4">
+                    <h4>Available Timeslots</h4>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <ul class="list-unstyled">
+                            <li th:each="a : ${availability}">
+                                <input type="radio" th:field="*{availabilityId}" th:id="${a.availabilityId()}" name="availabilityID" th:value="${a.availabilityId()}" class="btn-check" autocomplete="off" />
+                                <label th:for="${a.availabilityId()}" class="btn btn-outline-primary mb-2">
+                                    <span th:text="${clinicMap[a.clinicID()].clinic}"/>
+                                    <br>
+                                    <span th:text="${a.dateTimeStart}"/> - <span th:text="${a.dateTimeEnd}"/>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Appointment Details Section -->
+                <div class="form-group mb-4">
+                    <h4>Appointment Details</h4>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Add appointment details here"></textarea>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+
+</html>

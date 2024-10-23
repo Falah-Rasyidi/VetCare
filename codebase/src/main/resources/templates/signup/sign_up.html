@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="eng">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+    <!-- Layout -->
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/signup/signup.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
+    <script th:src="@{/js/app.js}" defer></script>
+    <!-- Layout -->
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="signup-form">
+        <h1 class="display-5 signup-title"><strong><a th:href="@{/}">VetCare</a></strong></h1>
+        <h3 class="text-muted text-center">Sign up</h3>
+        <hr/>
+        <form th:class="${!#arrays.isEmpty(errors)} ? 'was-validated' : 'needs-validation'" th:action="@{/signup}"
+              th:object="${newUser}" method="post">
+            <div>
+                <label for="first-name">First name</label>
+                <input type="text" class="form-control" id="first-name" th:field="*{firstName}"
+                       placeholder="Enter your first name" required>
+                <div class="invalid-feedback">
+                    <p>Please provide a first name</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="last-name">Last name</label>
+                <input type="text" class="form-control" id="last-name" th:field="*{lastName}"
+                       placeholder="Enter your last name" required>
+                <div class="invalid-feedback">
+                    <p>Please provide a last name</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       th:value="${tempUser.getEmail()}" placeholder="your@email.com"
+                       required>
+                <div class="invalid-feedback">
+                    <p th:if="${#arrays.contains(errors, 'emailDuplicate')}">Email already in use. Please enter another
+                        email</p>
+                    <p th:if="${#arrays.contains(errors, 'emailEmpty')}">Please provide a valid email</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                       th:value="${tempUser.getPassword()}" placeholder="Enter a password" minlength="8" required>
+                <div class="invalid-feedback">
+                    <p th:if="${#arrays.contains(errors, 'passwordEmpty')}">Please provide a valid password</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                       th:value="${tempUser.getConfirmPassword()}" placeholder="Retype password" minlength="8" required>
+                <div class="invalid-feedback">
+                    <p th:if="${#arrays.contains(errors, 'passwordMismatch')}">Passwords do not match</p>
+                    <p th:if="${#arrays.contains(errors, 'confirmPasswordEmpty')}">Please retype password</p>
+                </div>
+            </div>
+
+            <div>
+                <label for="phoneNumber">(Australian) Phone number</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">+61</div>
+                    </div>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                           th:value="${tempUser.getPhoneNumber()}"
+                           placeholder="xxx yyy zzz" required>
+                    <div class="invalid-feedback">
+                        <p th:if="${#arrays.contains(errors, 'invalidPhoneNumber')}">Please provide a valid Australian phone number</p>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+        <hr/>
+        <!--    Incorrect usage of API, currently only using it for visuals due to inconsistent URI endpointing    -->
+        <a href="/oauth2/authorization/google">
+            <div style="pointer-events: none">
+                <script src="https://accounts.google.com/gsi/client" async></script>
+                <div id="g_id_onload"
+                     data-context="use"
+                >
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="sign_in_with"
+                     data-shape="rectangular"
+                     data-logo_alignment="left">
+                </div>
+            </div>
+        </a>
+        <hr/>
+        <p>Already have an account? <a th:href="@{/login_user}">Log in</a></p>
+    </div>
+</div>
+</body>
+
+</html>
